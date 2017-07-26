@@ -1,0 +1,23 @@
+These examples come from:
+
+Lua Quick Reference
+Published: Jul 2017
+ISBN: 978-0-9912379-3-7
+Pages: 158
+
+https://foicica.com/lua
+
+The contents of these examples may also include test code and/or boilerplate
+code delimitted by "snipped" comments.
+
+In Lua, snipped comments look like:
+
+--8<---------------------------------------------------------------------------
+Test and/or boilerplate code not included in the book.
+--8<---------------------------------------------------------------------------
+
+In C, snippet comments look like:
+
+//8<---------------------------------------------------------------------------
+Test and/or boilerplate code not included in the book.
+//8<---------------------------------------------------------------------------
