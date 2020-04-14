@@ -1,7 +1,7 @@
-// Example 24. Push a lower-case copy of a string
+// Example 23. Push the entire contents of a file as a string
 
 //8<----------------------------------------------------------------------------
-#include <ctype.h>
+#include <stdio.h>
 #include <string.h>
 #include "lua.h"
 #include "lauxlib.h"
@@ -10,15 +10,17 @@
 int main(int argc, char **argv) {
   lua_State *L = luaL_newstate();
   luaL_openlibs(L);
-  const char *s = "TEST";
+  const char *filename = "/home/mitchell/code/textadept/src/textadept.c";
 //8<----------------------------------------------------------------------------
 
+FILE *f = fopen(filename, "r");
 luaL_Buffer b;
-size_t len = strlen(s);
-char *p = luaL_buffinitsize(L, &b, len);
-for (int i = 0; i < len; i++)
-  p[i] = tolower((unsigned char)s[i]);
-luaL_pushresultsize(&b, len);
+luaL_buffinit(L, &b);
+char buf[BUFSIZ];
+while (fgets(buf, BUFSIZ, f) != NULL)
+  luaL_addlstring(&b, buf, strlen(buf));
+luaL_pushresult(&b);
+fclose(f);
 
 //8<----------------------------------------------------------------------------
   printf("%s\n", lua_tostring(L, -1));

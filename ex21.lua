@@ -1,9 +1,17 @@
--- Example 21. Compute a date 90 days in the future
-local time = os.date("*t") -- e.g. 01 May 2017
-time.day = time.day + 90
-local future = os.time(time)
-os.date("%d %b %Y", future) -- e.g. 30 Jul 2017
+-- Example 20. Fetch the contents of a directory
 
 --8<----------------------------------------------------------------------------
-print(os.date("%d %b %Y", future))
+local dir = '/home/mitchell/code/textadept/'
+--8<----------------------------------------------------------------------------
+
+local filenames = {}
+local p = io.popen("ls -1 " .. dir) -- or "dir /B "
+for filename in p:lines() do
+  filenames[#filenames + 1] = filename
+end
+
+--8<----------------------------------------------------------------------------
+for i = 1, #filenames do
+  print(filenames[i])
+end
 --8<----------------------------------------------------------------------------

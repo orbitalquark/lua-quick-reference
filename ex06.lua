@@ -1,13 +1,15 @@
--- Example 6. Create a read-only table
-local t = { --[[ read-only table contents ]] }
-t = setmetatable({}, {
-  __index = t,
-  __newindex = function() error("read-only table") end
-})
-
+-- Example 6. Processing a file
+local filenames = { --[[ list of filenames... ]] }
 --8<----------------------------------------------------------------------------
-rawset(t,'x', 1)
-rawset(t,'y', 2)
-print(t.x, t.y)
-t.z = 3
+filenames = {'/usr/share/dict/words'}
 --8<----------------------------------------------------------------------------
+for i = 1, #filenames do
+  local f <close> = io.open(filenames[i])
+  if f then
+    --8<------------------------------------------------------------------------
+    local n = select(2, f:read('a'):gsub('\n', '\n'))
+    print(n .. ' words')
+    --8<------------------------------------------------------------------------
+    --[[ process file... ]]
+  end
+end

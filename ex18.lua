@@ -1,27 +1,29 @@
--- Example 18. Echo lines matching a Lua pattern
-
---8<----------------------------------------------------------------------------
-local lines = {
-  'foo\n',
-  '2017/01/01\n',
-  'bar\n',
-  '2017/02/01\n',
-  'baz\n'
-}
-local i = 0
-io.read = function()
-  i = i + 1
-  return lines[i]
-end
---8<----------------------------------------------------------------------------
-
-local date_patt = "%d+/%d+/%d+"
-local line = io.read("*L")
-while line do
-  if line:find(date_patt) then
-    io.write(line)
+-- Example 17. Generate list permutations
+-- Permutes a list by taking each element and
+-- recursively re-ordering the remaining elements.
+-- For instance, given {1, 2, 3}:
+-- Takes 1 and re-orders 2 and 3 (1, 2, 3 and 1, 3, 2).
+-- Takes 2 and re-orders 1 and 3 (2, 1, 3 and 2, 3, 1).
+-- Takes 3 and re-orders 1 and 2 (3, 1, 2 and 3, 2, 1).
+local function permute(list, i)
+  i = i or 1
+  if i > #list then
+    coroutine.yield(list)
+  else
+    for j = i, #list do
+      list[i], list[j] = list[j], list[i]
+      permute(list, i + 1)
+      list[i], list[j] = list[j], list[i]
+    end
   end
-  line = io.read("*L")
 end
--- Note: for line in io.lines(io.stdin, "*L") do … end
--- is also valid.
+-- Iterator.
+local function permutations(list)
+  return coroutine.wrap(function() permute(list) end)
+end
+for permutation in permutations{1, 2, 3} do
+  --[[ process permutation ]]
+  --8<--------------------------------------------------------------------------
+  print(table.unpack(permutation))
+  --8<--------------------------------------------------------------------------
+end

@@ -1,29 +1,45 @@
--- Example 17. Generate list permutations
--- Permutes a list by taking each element and
--- recursively re-ordering the remaining elements.
--- For instance, given {1, 2, 3}:
--- Takes 1 and re-orders 2 and 3 (1, 2, 3 and 1, 3, 2).
--- Takes 2 and re-orders 1 and 3 (2, 1, 3 and 2, 3, 1).
--- Takes 3 and re-orders 1 and 2 (3, 1, 2 and 3, 2, 1).
-local function permute(list, i)
-  i = i or 1
-  if i > #list then
-    coroutine.yield(list)
-  else
-    for j = i, #list do
-      list[i], list[j] = list[j], list[i]
-      permute(list, i + 1)
-      list[i], list[j] = list[j], list[i]
+-- Example 16. Emulate string.gsub() without captures
+-- Returns a thread that, for each instance of a
+-- pattern found, yields that match to main thread and
+-- substitutes it with the replacement received.
+local function gsub(str, patt, init)
+  init = init or 1
+  return coroutine.create(function()
+    local buffer = {} -- for building resultant string
+    local s, e = str:find(patt, init)
+    while s do
+      -- Add substring up to match to result buffer.
+      buffer[#buffer + 1] = str:sub(init, s - 1)
+      -- Yield match, receive replacement, and add to
+      -- result buffer.
+      local match = str:sub(s, e)
+      local replacement = coroutine.yield(match)
+      buffer[#buffer + 1] = replacement
+      -- Continue the search.
+      init = e + 1
+      s, e = str:find(patt, init)
     end
+    -- Build and return the final replacement string.
+    return table.concat(buffer)
+  end)
+end
+-- Replaces all instances of a pattern in a string by
+-- creating a thread that searches within that string
+-- and, for each match yielded, produces a suitable
+-- replacement.
+local function threaded_gsub(str, patt, repl)
+  local thread = gsub(str, patt)
+  local ok, match = coroutine.resume(thread)
+  while coroutine.status(thread) == "suspended" do
+    local replacement = --[[ produce from match ]]
+    --8<------------------------------------------------------------------------
+    match:upper()
+    --8<------------------------------------------------------------------------
+    ok, match = coroutine.resume(thread, replacement)
   end
+  return match -- final resultant string
 end
--- Iterator.
-local function permutations(list)
-  return coroutine.wrap(function() permute(list) end)
-end
-for permutation in permutations{1, 2, 3} do
-  --[[ process permutation ]]
-  --8<--------------------------------------------------------------------------
-  print(table.unpack(permutation))
-  --8<--------------------------------------------------------------------------
-end
+
+--8<----------------------------------------------------------------------------
+print(threaded_gsub('foo', '.'))
+--8<----------------------------------------------------------------------------
