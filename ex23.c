@@ -1,4 +1,4 @@
-// Example 22. Simple stand-alone Lua interpreter
+// Example 23. Simple stand-alone Lua interpreter
 #include "lua.h"
 #include "lauxlib.h"
 #include "lualib.h"

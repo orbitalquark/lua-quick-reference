@@ -1,4 +1,4 @@
--- Example 10. Handle string encoding errors
+-- Example 11. Handle string encoding errors
 
 --8<----------------------------------------------------------------------------
 filename = '/home/mitchell/code/textadept/init.lua'

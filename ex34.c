@@ -1,4 +1,4 @@
-// Example 33. Call a function for each table key-value pair
+// Example 34. Call a function for each table key-value pair
 
 //8<----------------------------------------------------------------------------
 #include "lua.h"

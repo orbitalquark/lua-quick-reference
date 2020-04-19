@@ -1,4 +1,4 @@
--- Example 15. Pretty print a table
+-- Example 16. Pretty print a table
 
 --8<----------------------------------------------------------------------------
 t = {a = 1, b = 2, c = 3}

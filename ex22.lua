@@ -1,4 +1,4 @@
--- Example 21. Compute a date 90 days in the future
+-- Example 22. Compute a date 90 days in the future
 local time = os.date("*t") -- e.g. 01 May 2017
 time.day = time.day + 90
 local future = os.time(time)

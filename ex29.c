@@ -1,4 +1,4 @@
-// Example 28. C function that translates string characters
+// Example 29. C function that translates string characters
 
 //8<----------------------------------------------------------------------------
 #include <stdio.h>

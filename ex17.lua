@@ -1,4 +1,4 @@
--- Example 16. Emulate string.gsub() without captures
+-- Example 17. Emulate string.gsub() without captures
 -- Returns a thread that, for each instance of a
 -- pattern found, yields that match to main thread and
 -- substitutes it with the replacement received.

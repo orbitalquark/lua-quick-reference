@@ -1,4 +1,4 @@
-// Example 26. Delete all string keys from a table
+// Example 27. Delete all string keys from a table
 
 //8<----------------------------------------------------------------------------
 #include "lua.h"

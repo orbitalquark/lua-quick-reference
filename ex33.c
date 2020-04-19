@@ -1,4 +1,4 @@
-// Example 32. Monitor output from a set of files
+// Example 33. Monitor output from a set of files
 
 //8<----------------------------------------------------------------------------
 #include <stdio.h>

@@ -1,4 +1,4 @@
--- Example 17. Generate list permutations
+-- Example 18. Generate list permutations
 -- Permutes a list by taking each element and
 -- recursively re-ordering the remaining elements.
 -- For instance, given {1, 2, 3}:

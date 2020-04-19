@@ -1,4 +1,4 @@
--- Example 7. A sample class for 2-D vector objects
+-- Example 8. A sample class for 2-D vector objects
 -- Create the vector class object.
 local vector = {}
 vector.__index = vector

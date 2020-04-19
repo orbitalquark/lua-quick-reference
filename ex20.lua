@@ -1,4 +1,4 @@
--- Example 19. Obtain a file's size before processing it
+-- Example 20. Obtain a file's size before processing it
 
 --8<----------------------------------------------------------------------------
 local filename = '/home/mitchell/code/textadept/init.lua'

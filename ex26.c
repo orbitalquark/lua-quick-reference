@@ -1,4 +1,4 @@
-// Example 25. Use a C structure as a Lua value
+// Example 26. Use a C structure as a Lua value
 
 //8<----------------------------------------------------------------------------
 #include <stdio.h>

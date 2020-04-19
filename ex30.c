@@ -1,4 +1,4 @@
-// Example 29. Call Lua's string.find
+// Example 30. Call Lua's string.find
 
 //8<----------------------------------------------------------------------------
 #include <stdio.h>

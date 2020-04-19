@@ -1,4 +1,4 @@
--- Example 20. Fetch the contents of a directory
+-- Example 21. Fetch the contents of a directory
 
 --8<----------------------------------------------------------------------------
 local dir = '/home/mitchell/code/textadept/'

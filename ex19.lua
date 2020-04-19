@@ -1,4 +1,4 @@
--- Example 18. Echo lines matching a Lua pattern
+-- Example 19. Echo lines matching a Lua pattern
 
 --8<----------------------------------------------------------------------------
 local lines = {

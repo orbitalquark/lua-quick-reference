@@ -1,4 +1,4 @@
-// Example 27. Mathematical gamma function
+// Example 28. Mathematical gamma function
 
 //8<----------------------------------------------------------------------------
 #include <math.h>

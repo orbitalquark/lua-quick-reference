@@ -1,4 +1,4 @@
-// Example 23. Push the entire contents of a file as a string
+// Example 24. Push the entire contents of a file as a string
 
 //8<----------------------------------------------------------------------------
 #include <stdio.h>

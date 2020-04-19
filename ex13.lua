@@ -1,4 +1,4 @@
--- Example 12. Save game data in a binary format
+-- Example 13. Save game data in a binary format
 -- Saved player data comprises a name, level (1-100),
 -- attribute stats (0-255), map xy-coordinate position,
 -- and inventory of items. Inventory items each have an

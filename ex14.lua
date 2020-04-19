@@ -1,4 +1,4 @@
--- Example 13. Simple URL parser
+-- Example 14. Simple URL parser
 function urlparse(url)
   -- Decode escapes like "%5C" -> "\".
   url = url:gsub("%%(%x%x)", function(c)

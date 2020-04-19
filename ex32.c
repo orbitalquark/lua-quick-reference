@@ -1,4 +1,4 @@
-// Example 31. Run user-defined Lua code in a sandbox
+// Example 32. Run user-defined Lua code in a sandbox
 
 //8<----------------------------------------------------------------------------
 #include <stdio.h>

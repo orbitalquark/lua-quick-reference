@@ -1,4 +1,4 @@
--- Example 14. Iterate over a table in order by string keys
+-- Example 15. Iterate over a table in order by string keys
 -- Create the table to be iterated over.
 local t = {a = 1, b = 2, c = 3, z = 26}
 -- Create intermediate list of keys and sort it.

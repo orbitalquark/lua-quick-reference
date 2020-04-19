@@ -1,4 +1,4 @@
--- Example 8. Define, load, and use a Lua module.
+-- Example 9. Define, load, and use a Lua module.
 -- File "trig.lua".
 local M = {}
 -- Radians mode.

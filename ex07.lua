@@ -1,4 +1,4 @@
--- Example 6. Create a read-only table
+-- Example 7. Create a read-only table
 local t = { --[[ read-only table contents ]] }
 t = setmetatable({}, {
   __index = t,

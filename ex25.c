@@ -1,4 +1,4 @@
-// Example 24. Push a lower-case copy of a string
+// Example 25. Push a lower-case copy of a string
 
 //8<----------------------------------------------------------------------------
 #include <ctype.h>

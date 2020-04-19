@@ -1,4 +1,4 @@
-// Example 30. Complex number module
+// Example 31. Complex number module
 
 //8<----------------------------------------------------------------------------
 #include "lualib.h"

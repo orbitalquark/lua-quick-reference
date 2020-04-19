@@ -1,4 +1,4 @@
--- Example 11. Safely load a configuration file
+-- Example 12. Safely load a configuration file
 
 --8<----------------------------------------------------------------------------
 local f = io.open('config.lua', 'w')

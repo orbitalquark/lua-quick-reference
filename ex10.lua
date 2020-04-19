@@ -1,4 +1,4 @@
--- Example 9. Control global variable access and assignment
+-- Example 10. Control global variable access and assignment
 setmetatable(_G, {
   __index = function(t, key)
     local errmsg = "Unknown global '%s'"
