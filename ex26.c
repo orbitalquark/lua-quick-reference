@@ -9,18 +9,22 @@
 //8<----------------------------------------------------------------------------
 
 // C struct for using FILE* as a Lua value.
-typedef struct {
-  FILE *f;
-  int closed; // cannot fclose(f) twice
-} lFile;
+typedef struct {FILE *f;} File;
 
-// Metamethod for closing files prior to deletion.
-static int l_filegc(lua_State *L) {
-  lFile *f = (lFile *)luaL_checkudata(L, 1, "file_mt");
-  if (!f->closed)
-    fclose(f->f);
+// Metamethod for closing to-be-closed files.
+static int close_file(lua_State *L) {
+  File *lf = (File *)luaL_checkudata(L, 1, "file_mt");
+  lua_getiuservalue(L, 1, 1); // f closed?
+  if (!lua_toboolean(L, -1)) {
+    fclose(lf->f);
+    lua_pushboolean(L, 1);
+    lua_setiuservalue(L, 1, 1); // f closed now
+    //8<------------------------------------------------------------------------
+    printf("file closed\n");
+    //8<------------------------------------------------------------------------
+  }
   //8<--------------------------------------------------------------------------
-  printf("file closed\n");
+  else printf("file already closed\n");
   //8<--------------------------------------------------------------------------
   return 0;
 }
@@ -33,19 +37,25 @@ int main() {
 //8<----------------------------------------------------------------------------
 
 // Create a new file userdata, open and associate a
-// file with it, and assign a metatable that ensures
-// the file is eventually closed.
-lFile *f = (lFile *)lua_newuserdata(L, sizeof(lFile));
-f->f = fopen(filename, "r");
-f->closed = 0;
+// file with it, assign a metatable that helps
+// automatically close the file, and mark the userdata
+// as a to-be-closed variable.
+File *lf = lua_newuserdatauv(L, sizeof(FILE), 1);
+lf->f = fopen(filename, "r");
+lua_pushboolean(L, 0);
+lua_setiuservalue(L, -2, 1); // f not closed yet
 if (luaL_newmetatable(L, "file_mt")) {
-  lua_pushcfunction(L, l_filegc);
+  lua_pushcfunction(L, close_file);
+  lua_setfield(L, -2, "__close");
+//8<----------------------------------------------------------------------------
+  lua_pushcfunction(L, close_file);
   lua_setfield(L, -2, "__gc");
-  /* define additional metamethods */
+//8<----------------------------------------------------------------------------
 }
 lua_setmetatable(L, -2);
+lua_toclose(L, -1);
 /* do something with the file */
-lua_pop(L, 1); // invokes __gc()
+lua_pop(L, 1); // invokes __close()
 
 //8<----------------------------------------------------------------------------
   if (lua_gettop(L) > 0) printf("stack size != 0\n");

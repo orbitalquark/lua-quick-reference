@@ -1,6 +1,8 @@
+LUA_PREFIX=/tmp/lua-5.4.0/install
 CC = gcc
-CFLAGS = -g -std=c99 -I /usr/include/lua5.3
-LDFLAGS = -llua5.3
+CFLAGS = -g -std=c99 -I $(LUA_PREFIX)/include
+LDFLAGS = $(LUA_PREFIX)/lib/liblua.a -lm -ldl
+#LDFLAGS = -llua -lm -ldl
 
 exes = ex23 ex24 ex25 ex26 ex27 ex28 ex29 ex30 ex31 ex32 ex33 ex34
 all: $(exes)
@@ -18,10 +20,9 @@ ex32: ex32.c; $(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
 ex33: ex33.c; $(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
 ex34: ex34.c; $(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
 
-ex33 ex34: LDFLAGS+=-lm -ldl
-
 clean:
 	rm -f $(exes)
 
 run: $(exes)
 	for exe in $(exes); do ./$$exe; done
+	for lua in `ls *.lua`; do ./ex23 $$lua; done

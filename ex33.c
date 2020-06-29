@@ -12,8 +12,8 @@ const char *filenames[32]; // will have NULL sentinel
 
 // Thread body continuation function for monitoring a
 // file.
-static int l_monitork(lua_State *thread, int status,
-                      lua_KContext ctx) {
+static int monitor(lua_State *thread, int status,
+                   lua_KContext ctx) {
   FILE *f = (FILE*)ctx;
   // Stop monitoring file if requested to.
   if (status == LUA_YIELD &&
@@ -29,21 +29,22 @@ static int l_monitork(lua_State *thread, int status,
     char buf[BUFSIZ];
     fgets(buf, BUFSIZ, f);
     lua_pushstring(thread, buf);
-    return lua_yieldk(thread, 1, ctx, l_monitork);
+    return lua_yieldk(thread, 1, ctx, monitor);
   } else {
     // No data to read; yield nothing.
-    return lua_yieldk(thread, 0, ctx, l_monitork);
+    return lua_yieldk(thread, 0, ctx, monitor);
   }
 }
 
 // Thread body function for monitoring a file.
-static int l_monitorfile(lua_State *thread) {
+static int monitor_file(lua_State *thread) {
   const char *filename = luaL_checkstring(thread, 1);
   FILE *f = fopen(filename, "r");
   if (!f)
     return luaL_error(thread, "file '%s' not found",
                       filename);
-  return l_monitork(thread, LUA_OK, (lua_KContext)f);
+  lua_settop(thread, 0); // clear
+  return monitor(thread, LUA_OK, (lua_KContext)f);
 }
 
 //8<----------------------------------------------------------------------------
@@ -58,9 +59,10 @@ lua_createtable(L, 32, 0); // active threads table
 for (int i = 0; i < 32; i++) {
   if (!filenames[i]) break;
   lua_State *thread = lua_newthread(L);
-  lua_pushcfunction(thread, l_monitorfile);
+  lua_pushcfunction(thread, monitor_file);
   lua_pushstring(thread, filenames[i]);
-  if (lua_resume(thread, L, 1) == LUA_YIELD)
+  int nresults; // unused
+  if (lua_resume(thread, L, 1, &nresults) == LUA_YIELD)
     // Store thread for monitoring.
     lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
   else {
@@ -78,7 +80,7 @@ while (lua_rawlen(L, -1) > 0) {
   lua_State *thread = lua_tothread(L, -1);
   if (lua_gettop(thread) > 0) {
     // Thread has output from its monitored file.
-    const char *line = lua_tostring(thread, 1);
+    const char *line = lua_tostring(thread, -1);
     /* process line and possibly stop monitoring */
     //8<------------------------------------------------------------------------
     printf("%s", line);
@@ -86,7 +88,8 @@ while (lua_rawlen(L, -1) > 0) {
     //8<------------------------------------------------------------------------
     lua_pushboolean(thread, keep_monitoring);
     lua_replace(thread, 1);
-    lua_resume(thread, L, 1);
+    int nresults; // unused
+    lua_resume(thread, L, 1, &nresults);
     if (!keep_monitoring) {
       // Stop monitoring the now-dead thread.
       lua_getglobal(L, "table");

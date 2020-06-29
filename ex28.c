@@ -9,7 +9,7 @@
 #include "lualib.h"
 
 //8<----------------------------------------------------------------------------
-static int l_gamma(lua_State *L) {
+static int gamma(lua_State *L) {
   double z = luaL_checknumber(L, 1); // fetch argument
   lua_pushnumber(L, tgamma(z)); // push value to return
   return 1; // number of stack values to return
@@ -23,7 +23,7 @@ int main() {
 
 // Add gamma to Lua's math module.
 lua_getglobal(L, "math");
-lua_pushcfunction(L, l_gamma);
+lua_pushcfunction(L, gamma);
 lua_setfield(L, -2, "gamma");
 lua_pop(L, 1); // global "math"
 
