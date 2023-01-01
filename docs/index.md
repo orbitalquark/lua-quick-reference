@@ -10,13 +10,8 @@ Second Edition
 
 Order the <a href="https://gum.co/luaqr" target="_blank">e-book</a> -- $20
 USD<br/>
-Order the <a href="https://gum.co/qr_bundle" target="_blank">e-book bundle</a>
-with [Textadept Quick Reference][] -- $27 USD<br/>
 Order the print book on Amazon [US][], [CA][], [UK][], [DE][], [FR][], [IT][],
 [ES][] -- ~$28 USD<br/>
-Order the <a href="https://gum.co/luaqr_bundle" target="_blank">first edition
-book bundle</a> -- <span style="text-decoration: line-through">$35</span> $21
-USD while supplies last
 
 Published: May 2020<br/>
 ISBN: 978-0-9912379-5-1<br/>
@@ -47,7 +42,6 @@ This book covers:
 Mitchell commands over 15 years of experience programming in and embedding Lua
 in both the corporate and open-source realms.
 
-[Textadept Quick Reference]: https://orbitalquark.github.io/textadept/book.html
 [US]: https://www.amazon.com/dp/0991237951
 [CA]: https://www.amazon.ca/dp/0991237951
 [UK]: https://www.amazon.co.uk/dp/0991237951
