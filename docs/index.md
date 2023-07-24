@@ -1,16 +1,11 @@
-<script type="text/javascript" src="https://payhip.com/payhip.js"></script>
-
 <div style="float: left; width: 150px; margin: 0 1em 0 1em;">
-  <img src="cover.jpg" alt="cover"
-       style="border-width: 1px; max-width: 100%; height: auto;"/>
+  <img src="cover.jpg" alt="cover" style="border-width: 1px; max-width: 100%; height: auto;"/>
 </div>
 
 *Lua Quick Reference*<br/>
 Second Edition
 
-Order the
-<a href="https://payhip.com/b/VjSoO" class="payhip-buy-button" data-theme="none" data-product="VjSoO">
-e-book</a> -- $20 USD<br/>
+Order the <a>e-book</a> -- Temporarily unavailable<br/>
 Order the print book on Amazon [US][], [CA][], [UK][], [DE][], [FR][], [IT][],
 [ES][] -- ~$28 USD<br/>
 
