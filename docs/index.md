@@ -5,15 +5,13 @@
 *Lua Quick Reference*<br/>
 Second Edition
 
-Order the <a>e-book</a> -- Temporarily unavailable<br/>
-Order the print book on Amazon [US][], [CA][], [UK][], [DE][], [FR][], [IT][],
-[ES][] -- ~$28 USD<br/>
+Download the [e-book][] for free.
 
 Published: May 2020<br/>
 ISBN: 978-0-9912379-5-1<br/>
 Pages: 169
 
-Read an [excerpt][]. Download the [source code examples][].
+Download the [source code examples][].
 
 Lua is a small, fast, powerful, and embeddable scripting language. It is
 well-suited for use in video games, application scripting, embedded devices, and
@@ -38,19 +36,12 @@ This book covers:
 Mitchell commands over 15 years of experience programming in and embedding Lua
 in both the corporate and open-source realms.
 
-[US]: https://www.amazon.com/dp/0991237951
-[CA]: https://www.amazon.ca/dp/0991237951
-[UK]: https://www.amazon.co.uk/dp/0991237951
-[DE]: https://www.amazon.de/dp/0991237951
-[FR]: https://www.amazon.fr/dp/0991237951
-[IT]: https://www.amazon.it/dp/0991237951
-[ES]: https://www.amazon.es/dp/0991237951
-[excerpt]: https://github.com/orbitalquark/lua-quick-reference/blob/default/docs/excerpt.pdf
+[e-book]: https://github.com/orbitalquark/lua-quick-reference/blob/default/docs/LuaQuickReference2.pdf
 [source code examples]: https://github.com/orbitalquark/lua-quick-reference
 
 ## Table of Contents
 
-* Introduction ([excerpt][])
+* Introduction
   + Download
   + Code Editors
   + Conventions
@@ -58,7 +49,7 @@ in both the corporate and open-source realms.
   + Environment Variables
 * Command Line Options
 
-* Part I: The Lua Language ([excerpt][])
+* Part I: The Lua Language
   + Fundamentals
   + Comments
   + Identifiers and Reserved Words
@@ -133,7 +124,7 @@ in both the corporate and open-source realms.
   + Miscellaneous
 
 * Part II: The Lua C API
-  + C API Introduction ([excerpt][])
+  + C API Introduction
     - Compiling Lua Programs
   + The Stack
     - Increase Stack Size
@@ -176,9 +167,7 @@ in both the corporate and open-source realms.
   + Miscellaneous
 
 * Lua API Index
-* Concept Index ([excerpt][])
-
-[excerpt]: https://github.com/orbitalquark/lua-quick-reference/blob/default/docs/excerpt.pdf
+* Concept Index
 
 ## Errata
 
