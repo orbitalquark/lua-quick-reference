@@ -36,7 +36,7 @@ This book covers:
 Mitchell commands over 15 years of experience programming in and embedding Lua
 in both the corporate and open-source realms.
 
-[e-book]: https://github.com/orbitalquark/lua-quick-reference/blob/default/docs/LuaQuickReference2.pdf
+[e-book]: https://raw.githubusercontent.com/orbitalquark/lua-quick-reference/default/docs/LuaQuickReference2.pdf
 [source code examples]: https://github.com/orbitalquark/lua-quick-reference
 
 ## Table of Contents
